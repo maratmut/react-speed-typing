@@ -1,4 +1,4 @@
-// accept only letters and whitespaces
+// Принимать только буквы и пробелы
 export const isKeyboardCodeAllowed = (code: string) => {
   return (
     code.startsWith('Key') || code.startsWith('Digit') || code === 'Backspace' || code === 'Space'

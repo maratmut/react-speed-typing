@@ -1,4 +1,3 @@
-import React from 'react';
 import Caret from './Caret';
 import Character from './Character';
 

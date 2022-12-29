@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { MdRefresh } from 'react-icons/md';
 
 interface IRestartProps {

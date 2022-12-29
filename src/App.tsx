@@ -4,11 +4,12 @@ import Results from './components/Results';
 import UserTypings from './components/UserTypings';
 import WordsContainer from './components/WordsContainer';
 import useEngine from './hooks/useEngine';
+import { calculateAccuracyPercentage } from './utils/helpers';
 
-const words = faker.random.words(10);
+
 
 function App() {
-  const {state, words, timeLeft, typed} = useEngine()
+  const { state, words, timeLeft, errors, restart, totalTyped, typed } = useEngine();
   return (
     <>
       <CountTimer timeLeft={timeLeft} />
@@ -16,8 +17,14 @@ function App() {
         <GenerateWords words={words} />
         <UserTypings className="absolute inset-0" words={words} userInput={typed} />
       </WordsContainer>
-      <RestartButton onRestart={() => null} className={'mx-auto mt-10 text-slate-500'} />
-      <Results className="mt-10" errors={10} accuracyPercentage={100} total={200} />
+      <RestartButton onRestart={restart} className={'mx-auto mt-10 text-slate-500'} />
+      <Results
+      state={state}
+        className="mt-10"
+        errors={errors}
+        accuracyPercentage={calculateAccuracyPercentage(errors, totalTyped)}
+        total={totalTyped}
+      />
     </>
   );
 }
