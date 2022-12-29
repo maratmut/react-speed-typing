@@ -3,13 +3,15 @@ import RestartButton from './components/RestartButton';
 import Results from './components/Results';
 import UserTypings from './components/UserTypings';
 import WordsContainer from './components/WordsContainer';
+import useEngine from './hooks/useEngine';
 
 const words = faker.random.words(10);
 
 function App() {
+  const {state, words, timeLeft} = useEngine()
   return (
     <>
-      <CountTimer timeLeft={30} />
+      <CountTimer timeLeft={timeLeft} />
       <WordsContainer>
         <GenerateWords words={words} />
         <UserTypings className="absolute inset-0" userInput={'test'} />
