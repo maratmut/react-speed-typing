@@ -8,13 +8,13 @@ import useEngine from './hooks/useEngine';
 const words = faker.random.words(10);
 
 function App() {
-  const {state, words, timeLeft} = useEngine()
+  const {state, words, timeLeft, typed} = useEngine()
   return (
     <>
       <CountTimer timeLeft={timeLeft} />
       <WordsContainer>
         <GenerateWords words={words} />
-        <UserTypings className="absolute inset-0" userInput={'test'} />
+        <UserTypings className="absolute inset-0" words={words} userInput={typed} />
       </WordsContainer>
       <RestartButton onRestart={() => null} className={'mx-auto mt-10 text-slate-500'} />
       <Results className="mt-10" errors={10} accuracyPercentage={100} total={200} />
